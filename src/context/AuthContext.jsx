@@ -31,13 +31,7 @@ export function AuthProvider({ children }) {
   }
 
   async function register(name, email, password) {
-    await api.post('/auth/register', { name, email, password });
-    try {
-      return await login(email, password);
-    } catch (error) {
-      error.registrationSucceeded = true;
-      throw error;
-    }
+    return api.post('/auth/register', { name, email, password });
   }
 
   function logout() {

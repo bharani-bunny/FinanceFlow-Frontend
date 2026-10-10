@@ -11,15 +11,17 @@ import Transactions from './pages/Transactions.jsx';
 import Budgets from './pages/Budgets.jsx';
 import RecurringExpenses from './pages/RecurringExpenses.jsx';
 import SavingsGoals from './pages/SavingsGoals.jsx';
+import Welcome from './pages/Welcome.jsx';
 
 export default function App() {
   const { token } = useAuth();
   return (
     <Routes>
-      <Route path="/login" element={token ? <Navigate to="/" replace /> : <Login />} />
-      <Route path="/register" element={token ? <Navigate to="/" replace /> : <Register />} />
+      <Route path="/" element={<Welcome />} />
+      <Route path="/login" element={token ? <Navigate to="/app" replace /> : <Login />} />
+      <Route path="/register" element={token ? <Navigate to="/app" replace /> : <Register />} />
       <Route element={<ProtectedRoute />}>
-        <Route element={<AppLayout />}>
+        <Route path="/app" element={<AppLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="accounts" element={<Accounts />} />
           <Route path="transactions" element={<Transactions />} />
@@ -28,7 +30,7 @@ export default function App() {
           <Route path="savings-goals" element={<SavingsGoals />} />
         </Route>
       </Route>
-      <Route path="*" element={<Navigate to={token ? '/' : '/login'} replace />} />
+      <Route path="*" element={<Navigate to={token ? '/app' : '/'} replace />} />
     </Routes>
   );
 }

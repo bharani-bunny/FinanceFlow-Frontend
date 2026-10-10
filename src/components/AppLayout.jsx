@@ -3,12 +3,12 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 
 const links = [
-  ['/', 'Dashboard'],
-  ['/accounts', 'Accounts'],
-  ['/transactions', 'Transactions'],
-  ['/budgets', 'Budgets'],
-  ['/recurring-expenses', 'Recurring expenses'],
-  ['/savings-goals', 'Savings goals'],
+  ['/app', 'Dashboard'],
+  ['/app/accounts', 'Accounts'],
+  ['/app/transactions', 'Transactions'],
+  ['/app/budgets', 'Budgets'],
+  ['/app/recurring-expenses', 'Recurring expenses'],
+  ['/app/savings-goals', 'Savings goals'],
 ];
 
 export default function AppLayout() {
@@ -22,7 +22,7 @@ export default function AppLayout() {
         <div className="brand"><span className="brand-mark">F</span><span>FinanceFlow</span></div>
         <p className="side-label">WORKSPACE</p>
         <nav className="side-nav">
-          {links.map(([to, label]) => <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>{label}</NavLink>)}
+          {links.map(([to, label]) => <NavLink key={to} to={to} end={to === '/app'} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>{label}</NavLink>)}
         </nav>
         <div className="sidebar-bottom">
           <span className="avatar">{(user?.name || 'U').slice(0, 1).toUpperCase()}</span>

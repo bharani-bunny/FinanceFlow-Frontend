@@ -42,10 +42,10 @@ export default function Dashboard() {
   const period = monthLabel(dashboard.month, dashboard.year);
 
   return <>
-    <PageHeader title="Dashboard" description={`Your personal finance overview for ${period}.`} />
+    <PageHeader eyebrow="YOUR FINANCIAL OVERVIEW" title="Your money, in focus." description={`A clear look at your accounts and activity for ${period}.`} />
     <StatusMessage error={error} />
     <section className="dashboard-stats dashboard-stats-five">
-      {[
+      {[ 
         ['Total balance', dashboard.totalAccountBalance], ['Monthly income', dashboard.currentMonthIncome],
         ['Monthly expenses', dashboard.currentMonthExpenses], ['Monthly savings', dashboard.currentMonthSavings],
       ].map(([label, value]) => <article className="summary-card" key={label}><p>{label}</p><strong>{currency(value)}</strong></article>)}
